@@ -4,11 +4,11 @@ const res = require('express/lib/response');
 const router = express.Router();
 
 router.get('/users/signin', (req, res) => {
-  res.send('Entering the app');
+  res.render('users/signin');
 })
 
 router.get('/users/signup', (req, res) =>{
-  res.send('Authentication Form');
+  res.render('users/signup');
 
 
 });

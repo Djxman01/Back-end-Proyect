@@ -4,9 +4,11 @@ const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const session = require('express-session');
 
+
 // Initializations
 const app = express();
-require('./database');
+
+
 
 // Settings
 app.set('port',process.env.PORT || 3000);
@@ -36,6 +38,7 @@ app.use(session({
 app.use(require('./routes/index'));
 app.use(require('./routes/notes'));
 app.use(require('./routes/users'));
+
 
  
 // Static Files
