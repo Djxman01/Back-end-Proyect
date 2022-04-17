@@ -3,8 +3,8 @@
   {{text}}
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-{{/each}}
 
+{{/each}}
 
 <div class="col-md-4 mx-auto">
     <div class="card">
@@ -12,24 +12,28 @@
         <h3>New Notes</h3>
     </div>
     <div class="card-body">
-        <form action="/notes/new-notes" method="POST">
+        <form action="/notes/new-notes" method="post">
          <div class="form-group">
-           <input type="text" name="title" class="form.control" placeholder="Title" autofocus>
+           <input  type="text" name="title" class="form-control" placeholder="Title" autofocus>
          </div>
           <br>
           
          <div class="form-group">
-             <textarea name="description" class="form-control" placeholder="Description"></textarea>
+             <textarea  name="description" class="form-control" placeholder="Description"></textarea>
          </div>
 
          <br> 
           <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block">
+              <button type="submit" class="btn btn-primary btn-block form-control" >
                   Save
               </button>
           </div>
+         
        
         </form>
     </div>
 </div>
 </div>
+
+
+
