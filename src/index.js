@@ -1,8 +1,20 @@
+require("dotenv").config();
 const express = require('express')
 const path = require ('path');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const session = require('express-session');
+
+const mongoose = require("mongoose");
+
+mongoose
+  .connect(process.env.MONGO_PROD_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  
+  })
+  .then(() => console.log("Database connected!"))
+  .catch(err => console.log(err));
 
 
 // Initializations
@@ -11,7 +23,7 @@ const app = express();
 
 
 // Settings
-app.set('port',process.env.PORT || 3000);
+app.set('port',process.env.PORT || 3001);
 app.set('views',path.join(__dirname,'views'))
 app.engine('.hbs', exphbs.engine({
   defaultLayout: 'main',
