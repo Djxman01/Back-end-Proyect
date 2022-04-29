@@ -4,8 +4,9 @@ const path = require ('path');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const session = require('express-session');
-
+const flash =require('connect-flash');
 const mongoose = require("mongoose");
+const passport = require('passport');
 
 mongoose
   .connect(process.env.MONGO_PROD_URI, {
@@ -19,6 +20,7 @@ mongoose
 
 // Initializations
 const app = express();
+require('./config/passport');
 
 
 
@@ -41,10 +43,19 @@ app.use(session({
  secret: 'mysecretapp',
  resave: true,
  saveUninitialized:true
-}))
-
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 // Global Variables
+app.use((req, res, next) =>{
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.error_msg = req.flash('error_msg')
+  res.locals.error = req.flash('error');
+  next();
+});
+
 
 // Routes
 
